@@ -3,7 +3,13 @@
 cmake_minimum_required(VERSION 3.6.0 FATAL_ERROR)
 
 # Название проекта
-project (TestQml)
+project (TestQml LANGUAGES CXX)
+
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 if (CMAKE_SIZEOF_VOID_P MATCHES "8")
     set (PLATFORM_SIZE 64)
@@ -36,9 +42,7 @@ set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECTS_DST_DIR}/_BIN/${PLATFORM})
 # Пути для статических библиотек lib
 set (CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECTS_DST_DIR}/_LIB/${PLATFORM})
 
-find_package(Qt5Core REQUIRED)
-find_package(Qt5Gui REQUIRED)
-find_package(Qt5Quick REQUIRED)
+find_package(Qt5 COMPONENTS Core Quick REQUIRED)
 
 # Компилируем проект
 
@@ -71,21 +75,29 @@ set (RESOURCES
 	qml.qrc
 )
 
+set (QML
+	MenuItem.qml
+	MainMenu.qml
+	main.qml
+)
+
 qt5_wrap_cpp(MOCS ${MOC_HEADERS})
 qt5_add_resources(RCC ${RESOURCES})
 
 source_group ("Sources" FILES ${SOURCES})
 source_group ("Headers" FILES ${HEADERS})
-source_group ("Resource" FILES ${RESOURCES} ${RCC})
-source_group ("Generated Files" FILES ${MOCS})
+source_group ("Resource" FILES ${RESOURCES})
+source_group ("qml" FILES ${QML})
+source_group ("Generated Files" FILES ${MOCS} ${RCC})
 
 add_executable (TestQml WIN32
 	${HEADERS}
 	${SOURCES}
 	${RCC}
 	${MOCS}
+	${QML}
 )
 
-qt5_use_modules(TestQml Core Gui Quick)
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Core Qt5::Quick)
 
 set_directory_properties(PROPERTIES VS_STARTUP_PROJECT TestQml)
