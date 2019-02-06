@@ -1,4 +1,7 @@
 *.pro.user*
 /debug
-/x64/Debug
+/x64
 /release
+/_BIN
+/_BUILD
+/_LIB
