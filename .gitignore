@@ -1,1 +1,4 @@
 *.pro.user*
+/debug
+/x64/Debug
+/release

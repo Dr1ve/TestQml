@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
         using GameController = Game::GameController;
         GameController gameController;
         QObject::connect(&app, &QGuiApplication::lastWindowClosed, &gameController, &GameController::shutdown);
-
+		
         if (gameController.init()) {
             result = app.exec();
         } else {

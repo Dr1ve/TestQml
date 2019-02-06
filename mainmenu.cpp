@@ -1,6 +1,7 @@
 #include "mainmenu.h"
 
 #include <QQuickItem>
+#include <QGuiApplication>
 
 namespace Game {
     namespace Internal {
@@ -22,12 +23,20 @@ namespace Game {
             : QObject(parent),
               d(std::make_unique<MainMenuPrivate>(mainMenuItem))
         {
-
+			connect(mainMenuItem, SIGNAL(menuItemSelected(QString)), this, SLOT(menuItemSelected(QString)));
         }
 
         MainMenu::~MainMenu()
         {
 
         }
+
+		void MainMenu::menuItemSelected(QString selectedMenuItem)
+		{
+			if (selectedMenuItem == "Quit")
+			{
+				qApp->quit();
+			}
+		}
     }
 }

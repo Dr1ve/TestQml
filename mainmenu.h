@@ -21,6 +21,9 @@ namespace Game {
             explicit MainMenu(QQuickItem *mainMenuItem, QObject *parent = nullptr);
             ~MainMenu();
 
+		private slots:
+			void menuItemSelected(QString);
+
         private:
             Q_DISABLE_COPY(MainMenu)
 

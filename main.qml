@@ -22,8 +22,6 @@ Window {
             opacity: 100
 
             anchors.fill: parent
-
-            onMenuItemSelected : root.menuItemSelected(selectedMenuItem)
         }
 
         //GameView {}
@@ -31,12 +29,5 @@ Window {
         //Highscores {}
 
         //Help {}
-    }
-
-    function menuItemSelected(selectedMenuItem)
-    {
-        if (selectedMenuItem === "Quit") {
-            Qt.quit()
-        }
     }
 }
