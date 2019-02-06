@@ -5,3 +5,5 @@
 /_BIN
 /_BUILD
 /_LIB
+/_settings.cmake
+/CMakeLists.txt.user
