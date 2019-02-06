@@ -1,0 +1,44 @@
+import QtQuick 2.9
+import QtQuick.Window 2.2
+
+Window {
+    id: root
+
+    title: qsTr("Invaders")
+
+    visible: true
+    width: 690
+    height: 640
+
+    Rectangle {
+        id: contentRoot
+        color: "black"
+        anchors.fill: parent
+
+        MainMenu {
+            id: menu
+            visible: true
+            focus: true
+            opacity: 100
+
+            anchors.fill: parent
+        }
+
+        //GameView {}
+
+        //Highscores {}
+
+        //Help {}
+    }
+
+    Component.onCompleted: {
+        menu.menuItemSelected.connect(function(selectedMenuItem){menuItemSelected(selectedMenuItem)})
+    }
+
+    function menuItemSelected(selectedMenuItem)
+    {
+        if (selectedMenuItem === "Quit") {
+            Qt.quit()
+        }
+    }
+}
