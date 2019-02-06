@@ -2,6 +2,7 @@ import QtQuick 2.0
 
 Rectangle {
     id: root
+    objectName: "MainMenu"
 
     width: parent.width
     height: parent.height

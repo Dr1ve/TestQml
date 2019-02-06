@@ -14,7 +14,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp \
     gamecontroller.cpp \
-    game.cpp
+    game.cpp \
+    mainmenu.cpp
 
 RESOURCES += qml.qrc
 
@@ -31,4 +32,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     gamecontroller.h \
-    game.h
+    game.h \
+    mainmenu.h

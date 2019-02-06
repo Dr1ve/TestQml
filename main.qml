@@ -22,6 +22,8 @@ Window {
             opacity: 100
 
             anchors.fill: parent
+
+            onMenuItemSelected : root.menuItemSelected(selectedMenuItem)
         }
 
         //GameView {}
@@ -29,10 +31,6 @@ Window {
         //Highscores {}
 
         //Help {}
-    }
-
-    Component.onCompleted: {
-        menu.menuItemSelected.connect(function(selectedMenuItem){menuItemSelected(selectedMenuItem)})
     }
 
     function menuItemSelected(selectedMenuItem)

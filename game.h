@@ -22,6 +22,9 @@ namespace Game {
 
             bool init();
 
+        private slots:
+            void onRootObjectCreated(QObject *object, const QUrl &url);
+
         private:
             Q_DISABLE_COPY(Game)
 
